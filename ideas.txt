@@ -1,0 +1,6 @@
+CPS game:
+time clicks within 5 seconds
+show many graphs related to performance, stats about most recent run and comps. to others
+
+average score is linked to user, average of last 5 games so that bad performances can be phased out.
+
