@@ -4,3 +4,4 @@ show many graphs related to performance, stats about most recent run and comps. 
 
 average score is linked to user, average of last 5 games so that bad performances can be phased out.
 
+Graphs:

@@ -1,12 +1,15 @@
 class ClickerGame {
     constructor(parentNode) {
         this._parentNode = parentNode;
+        this.socket = io(); // used to communicate with server
+
+        this._buttonLabel = "CLICK!";
+        this._instructionsLabel = "Click the button as many times as you can in 5 seconds.";
 
         // Initialise game variables
         this._clicks = 0;
-        this._allowedTime = 5000; // milliseconds
-        this._remainingTime = this._allowedTime;
-        this._timerUpdateInterval = 10; // milliseconds
+        this._remainingTime = 5000; // initial time allowed, in milliseconds
+        this._timerUpdateInterval = 10; // timer update rate, in milliseconds
     }
 
     initDisplay() {
@@ -14,13 +17,21 @@ class ClickerGame {
         this._display = document.createElement("div");
         this._parentNode.appendChild(this._display);
 
+        // Instructions display
+        const instructionsLabel = document.createElement("p");
+        instructionsLabel.classList.add("clicker_stat");
+        instructionsLabel.appendChild(document.createTextNode(this._instructionsLabel));
+        this._display.appendChild(instructionsLabel);
+
         // Timer display
-        this._timeDisplay = document.createElement("span");
-        this._timeDisplay.appendChild(document.createTextNode(this._formatTime(this._allowedTime)));
         const timeDisplayLabel = document.createElement("p");
         timeDisplayLabel.classList.add("clicker_stat");
+        this._timeDisplay = document.createElement("span");
+        this._updateTimerDisplay();
+
         timeDisplayLabel.appendChild(document.createTextNode("Time left: "));
         timeDisplayLabel.appendChild(this._timeDisplay);
+        timeDisplayLabel.appendChild(document.createTextNode("s"));
         this._display.appendChild(timeDisplayLabel);
 
         // Click count display
@@ -37,7 +48,7 @@ class ClickerGame {
         this._button.classList.add("clicker_button");
         this._firstClickHandler = () => this._startGame(); // need to assign so it can be removed from button later
         this._button.addEventListener("click", this._firstClickHandler);
-        this._button.appendChild(document.createTextNode("CLICK!"));
+        this._button.appendChild(document.createTextNode(this._buttonLabel));
         this._display.appendChild(this._button);
     }
     

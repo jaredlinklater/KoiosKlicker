@@ -24,9 +24,22 @@ a.clicker_button {
   box-shadow: inset 0 -0.8em 0 -0.35em rgba(0,0,0,0.17);
   position: relative;
   user-select: none; /* disable highlighting */
+  animation: fadeIn ease 2s;
 }
 
 a.clicker_button:active {
   top: 0.2em;
   box-shadow:none;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    top: 2em;
+  }
+
+  100% {
+    opacity: 1;
+    top: 0em;
+  }
 }
