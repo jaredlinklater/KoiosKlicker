@@ -1,0 +1,32 @@
+* {
+  font-family: "Helvetica Neue";
+}
+
+#clicker_game {
+  margin: auto;
+  text-align: center;
+}
+
+.clicker_stat {
+  color: rgb(54, 179, 106);
+  font-size: x-large;
+}
+
+a.clicker_button {
+  color: #FFFFFF;
+  background-image: linear-gradient(to bottom right,  rgb(142, 199, 68), rgb(6, 140, 163));
+  font-size: xx-large;
+  font-weight: bold;
+  display: inline-block;
+  padding: 2em 3em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.35em;
+  box-shadow: inset 0 -0.8em 0 -0.35em rgba(0,0,0,0.17);
+  position: relative;
+  user-select: none; /* disable highlighting */
+}
+
+a.clicker_button:active {
+  top: 0.2em;
+  box-shadow:none;
+}
