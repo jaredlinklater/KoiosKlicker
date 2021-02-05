@@ -12,6 +12,8 @@
   font-size: x-large;
 }
 
+/*** Click button styling ***/
+
 a.clicker_button {
   color: #FFFFFF;
   background-image: linear-gradient(to bottom right,  rgb(142, 199, 68), rgb(6, 140, 163));
@@ -29,7 +31,7 @@ a.clicker_button {
 
 a.clicker_button:active {
   top: 0.2em;
-  box-shadow:none;
+  box-shadow: none;
 }
 
 @keyframes fadeIn {

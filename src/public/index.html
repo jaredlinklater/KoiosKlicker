@@ -1,65 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="stylesheets/style.css" />
+<title>Koios Klicker</title>
+<link rel="stylesheet" href="../stylesheets/style.css" />
+
+<!-- Load external libraries -->
+<script src="javascripts/socket.io-client/socket.io.js"></script>
+
+<!-- Load KoiosKlicker resources -->
+<link rel="stylesheet" href="stylesheets/KoiosKlicker-client/style.css" />
+<script src="javascripts/KoiosKlicker-client/ClickerGame.js"></script>
+<script src="javascripts/KoiosKlicker-client/main.js"></script>
+
 </head>
-<body>
-    <table class="center">
-        <tr>
-            <td>
-                <form>
-                    <table>
-                        <tr>
-                            <td>Username:</td>
-                            <td><input type="text" id="username" /></td>
-                        </tr>
-                        <tr>
-                            <td>First name:</td>
-                            <td><input type="text" id="fname" /></td>
-                        </tr>
-                        <tr>
-                            <td>Last name:</td>
-                            <td><input type="text" id="lname" /></td>
-                        </tr>
-                        <tr>
-                            <td>Password:</td>
-                            <td><input type="password" id="password" /></td>
-                        </tr>
-                    </table>
-                </form>
-            </td>
-            <td>
-                <form>
-                    <table class="reg_form_table">
-                        <tr>
-                            <td>Username:</td>
-                            <td><input type="text" id="username" /></td>
-                        </tr>
-                        <tr>
-                            <td>First name:</td>
-                            <td><input type="text" id="fname" /></td>
-                        </tr>
-                        <tr>
-                            <td>Last name:</td>
-                            <td><input type="text" id="lname" /></td>
-                        </tr>
-                        <tr>
-                            <td>Password:</td>
-                            <td><input type="password" id="password" /></td>
-                        </tr>
-                        <tr>
-                            <td>Confirm password:</td>
-                            <td><input type="password" id="c_password" /></td>
-                        </tr>
-                    </table>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="/koiosklicker/"><button>Go</button></a>
-            </td>
-        </tr>
-    </table>
-</body>  
+<body onload="main();">
+<div id="clicker_game"></div>
+</body>
 </html>
