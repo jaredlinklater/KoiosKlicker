@@ -1,34 +1,31 @@
-// Custom user manager, retrieves users and checks passwords
+const ServerSideStorage = require("./ServerSideStorage");
 
-const users = [
-    {id: 1, username: "fred", password: "pass"}
-];
+// Dump current users, and replace with test accounts
+//ServerSideStorage.dropUsers();
+//ServerSideStorage.loadTestAccounts();
 
+// Custom user manager; wrapper class for adding and retrieving
+// users from server-side local storage, and checks passwords
 class UserManager {
+    // Adds user to server-side local storage
+    addUser(username, fname, lname, password) {
+        return ServerSideStorage.addUser(username, fname, lname, password);
+    }
+
+    // Finds user in server-side local storage by given ID.
     findUserById(id, callback) {
-        let user = null;
-        for(let i = 0; i < users.length; i++) {
-            if(users[i].id == id) {
-                user = users[i];
-                break;
-            }
-        }
-
+        const user = ServerSideStorage.findUserById(id);
         callback(user);
     }
 
-    findUser(username, callback) {
-        let user = null;
-        for(let i = 0; i < users.length; i++) {
-            if(users[i].username == username) {
-                user = users[i];
-                break;
-            }
-        }
-
+    // Finds user in server-side local storage by given username.
+    findUserByUsername(username, callback) {
+        const user = ServerSideStorage.findUserByUsername(username);
         callback(user);
     }
 
+    // Checks a user's password against a given string. Should hash
+    // the given string in a secure system.
     checkPassword(user, password) {
         return user.password == password;
     }

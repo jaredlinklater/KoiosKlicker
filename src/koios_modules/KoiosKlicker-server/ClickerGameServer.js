@@ -8,7 +8,7 @@ module.exports = io => {
                 socket.on("test", console.log);
             });
             
-            console.log("ClickerGame server ready");
+            //console.log("ClickerGame server ready");
         }
     }
 

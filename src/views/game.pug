@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title="KOIOS Klicker"
+
+    // Load external libraries
+    script(src="javascripts/socket.io-client/socket.io.js")
+
+    // Load KoiosKlicker resources
+    link(rel="stylesheet", href="stylesheets/KoiosKlicker-client/style.css")
+    script(src="javascripts/KoiosKlicker-client/ClickerGame.js")
+    script(src="javascripts/KoiosKlicker-client/main.js")
+  body(onload="main('" + user.firstName + "');")
+    div(id="clicker_game")

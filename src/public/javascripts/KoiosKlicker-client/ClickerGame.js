@@ -1,8 +1,10 @@
 class ClickerGame {
-    constructor(parentNode) {
-        this._parentNode = parentNode;
-        this.socket = io(); // used to communicate with server
+    constructor(username) {
+        //this.socket = io(); // used to communicate with server
+        this._username = username ? username : null; // username to greet the player with
 
+        // Displayed text that may want to be changed from time to time.
+        this._greetingLabel = "Hello, " + this._username + "! Are you ready to play?"; // only shown if username is given
         this._buttonLabel = "CLICK!";
         this._instructionsLabel = "Click the button as many times as you can in 5 seconds.";
 
@@ -15,8 +17,17 @@ class ClickerGame {
     initDisplay() {
         // Initialise display
         this._display = document.createElement("div");
-        this._parentNode.appendChild(this._display);
+        this._display.classList.add("center");
+        document.getElementById("clicker_game").appendChild(this._display);
 
+        // Greeting display
+        if(this._username) {
+            const greetingLabel = document.createElement("p");
+            greetingLabel.classList.add("clicker_stat");
+            greetingLabel.appendChild(document.createTextNode(this._greetingLabel));
+            this._display.appendChild(greetingLabel);
+        }
+        
         // Instructions display
         const instructionsLabel = document.createElement("p");
         instructionsLabel.classList.add("clicker_stat");
@@ -44,7 +55,7 @@ class ClickerGame {
         this._display.appendChild(clickCountLabel);
 
         // Button display
-        this._button = document.createElement("a");
+        this._button = document.createElement("p");
         this._button.classList.add("clicker_button");
         this._firstClickHandler = () => this._startGame(); // need to assign so it can be removed from button later
         this._button.addEventListener("click", this._firstClickHandler);
