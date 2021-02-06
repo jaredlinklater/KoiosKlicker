@@ -59,7 +59,17 @@ router.post("/login",
     })
 );
 
+// Login/Register views
+router.get("/register", (req, res, next) => {
+    res.render("register");
+});
+
+router.get("/login", (req, res, next) => {
+    res.render("login");
+});
+
 // Ensure game is only accessed by authenticated users
+// Passes logged-in user's 'user' object to game
 router.get("/", ensureLoggedIn("/login"), (req, res, next) => {
     res.render("game", {user: req.user});
 });

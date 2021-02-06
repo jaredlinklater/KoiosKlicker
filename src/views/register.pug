@@ -1,0 +1,21 @@
+extends reg-login-parent
+
+block content
+  form(method='POST' action='/register')
+    h2 Create Account
+    .form-group
+      input.form-input(type='text' name='username' placeholder='Username')
+    .form-group
+      input.form-input(type='text' name='fname' placeholder='First name')
+    .form-group
+      input.form-input(type='text' name='lname' placeholder='Last name')
+    .form-group
+      input.form-input(type='password' name='password' placeholder='Password')
+    .form-group
+      input.form-input(type='password' name='re_password' placeholder='Repeat password')
+    .form-group
+      input.form-submit(type='submit' name='submit' value='Sign up')
+  p.login-reg-here
+    | Already have an account? 
+    a.login-reg-here-link(href='/login') Log in here
+  // Adapted from a Colorlib template (https://colorlib.com)

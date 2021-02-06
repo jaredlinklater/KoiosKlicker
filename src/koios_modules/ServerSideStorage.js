@@ -7,7 +7,7 @@ class ServerSideStorage {
     // Creates new db if it doesn't exist
     constructor() {
         this._db = LowDB;
-        this._db.defaults({users: [], userCount: 0 })
+        this._db.defaults({users: [], userCount: 0})
                 .write();
     }
 

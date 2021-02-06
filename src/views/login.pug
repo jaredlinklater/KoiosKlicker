@@ -1,0 +1,15 @@
+extends reg-login-parent
+
+block content
+  form(method='POST' action='/login')
+    h2 Log In
+    .form-group
+      input.form-input(type='text' name='username' placeholder='Username')
+    .form-group
+      input.form-input(type='password' name='password' placeholder='Password')
+    .form-group
+      input.form-submit(type='submit' name='submit' value='Log in')
+  p.login-reg-here
+    | Don't have an account? 
+    a.login-reg-here-link(href='/register') Sign up here
+  // Adapted from a Colorlib template (https://colorlib.com)
