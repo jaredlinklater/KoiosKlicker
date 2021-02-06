@@ -1,17 +1,18 @@
 const router = require("express").Router();
 
-// Configure user authentication
+/*** USER AUTHENTICATION CONFIGURATION ***/
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const UserManager = require("../koios_modules/UserManager");
-const connectEnsureLogin = require("connect-ensure-login");
+const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
 
+// Serialisation used by passport for sessions
 passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-    UserManager.findById(id, (user) => {
+    UserManager.findUserById(id, (user) => {
         done(null, user);
     });
 });
@@ -31,19 +32,17 @@ passport.use(new LocalStrategy(
     }
 ));
 
-// Ensure game is only accessed by authenticated users
-router.get("/", connectEnsureLogin.ensureLoggedIn("/login"));
 
+/*** ROUTES ***/
 // Handle authentication
 router.post("/login",
     passport.authenticate("local", {
         successReturnToOrRedirect: "/",
         failureRedirect: "/login"
-    }),
-    (req, res) => {
-        console.log("login valid");
-        res.redirect("/");
-    }
+    })
 );
+
+// Ensure game is only accessed by authenticated users
+router.get("/", ensureLoggedIn("/login"));
 
 module.exports = router;

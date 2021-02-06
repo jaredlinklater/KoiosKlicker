@@ -13,7 +13,6 @@ app.set("view engine", "jade");
 // Middleware setup
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
 app.use(session({
     secret: "6giUOa4sd8g5W5dVds4dmgA",
     saveUninitialized: false,
@@ -22,6 +21,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/", router);
+app.use(express.static(path.join(__dirname, "public"))); // use after router so router takes preference
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
