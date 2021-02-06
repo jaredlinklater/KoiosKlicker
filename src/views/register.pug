@@ -1,21 +1,22 @@
 extends reg-login-parent
 
 block content
-  form(method='POST' action='/register')
+  form(method='POST' action='/register' onsubmit="return checkSubmit();")
     h2 Create Account
     .form-group
-      input.form-input(type='text' name='username' placeholder='Username')
+      input.form-input(type='text' name='username' placeholder='Username' required)
     .form-group
-      input.form-input(type='text' name='fname' placeholder='First name')
+      input.form-input(type='text' name='fname' placeholder='First name' required)
     .form-group
-      input.form-input(type='text' name='lname' placeholder='Last name')
+      input.form-input(type='text' name='lname' placeholder='Last name' required)
     .form-group
-      input.form-input(type='password' name='password' placeholder='Password')
+      input.form-input(type='password' name='password' placeholder='Password' required)
     .form-group
-      input.form-input(type='password' name='re_password' placeholder='Repeat password')
+      input.form-input(type='password' name='re_password' placeholder='Repeat password' required)
+      p.invalid_password(id="invalid_password")
     .form-group
       input.form-submit(type='submit' name='submit' value='Sign up')
-  p.login-reg-here
-    | Already have an account? 
+  p.login-reg-here Already have an account? 
     a.login-reg-here-link(href='/login') Log in here
+  script(src="../javascripts/formValidator.js")
   // Adapted from a Colorlib template (https://colorlib.com)

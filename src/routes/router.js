@@ -36,6 +36,8 @@ passport.use(new LocalStrategy(
 /*** ROUTES ***/
 // Handle registration
 router.post("/register", (req, res, next) => {
+    //Data validation
+
     const user = UserManager.addUser(
         req.body.username,
         req.body.fname,
