@@ -6,7 +6,7 @@
       "firstName": "Admin",
       "lastName": "Istrator",
       "password": "password",
-      "gameID": "LZUJZ1jDcQCTMeMxZ4wam"
+      "gameID": "aCbvDRJDnhRSI6UcddpOI"
     },
     {
       "id": 2,
@@ -18,7 +18,14 @@
     }
   ],
   "userCount": 2,
-  "results": [],
+  "results": [
+    {
+      "userID": 1,
+      "gameID": "aCbvDRJDnhRSI6UcddpOI",
+      "CPS": 0.2,
+      "time": 1612725299213
+    }
+  ],
   "cpsResults": [
     {
       "userID": 2,
