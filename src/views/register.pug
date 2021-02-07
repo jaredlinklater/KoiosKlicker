@@ -2,6 +2,7 @@ extends reg-login-parent
 
 block content
   form(method='POST' action='/register' onsubmit="return checkSubmit();")
+    img.logo(src="images/KOIOSKlickerLogo.png")
     h2 Create Account
     .form-group
       input.form-input(type='text' name='username' placeholder='Username' required)

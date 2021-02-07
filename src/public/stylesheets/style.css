@@ -18,19 +18,18 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  padding: 115px 0;
+  padding: 50px 0;
 }
 
 h2 {
   line-height: 1.66;
-  margin: 0;
+  margin: 30px 0px;
   padding: 0;
   font-weight: 900;
   color: #222;
   font-size: 24px;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 40px;
 }
 
 p {
@@ -49,6 +48,12 @@ a:focus, a:active {
 .container {
   width: 660px;
   position: relative;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 300px;
+  display: block;
   margin: 0 auto;
 }
 
