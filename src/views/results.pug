@@ -1,13 +1,13 @@
 doctype html
 html
   head
-    title="KOIOS Klicker"
+    title="KOIOS Klicker Results"
 
     // Load external libraries
     script(src="javascripts/socket.io-client/socket.io.js")
 
     // Load KoiosKlicker resources
     link(rel="stylesheet", href="stylesheets/KoiosKlicker-client/style.css")
-    script(src="javascripts/KoiosKlicker-client/KoiosKlickerGameClient.js")
-  body(onload="loadGame('" + gameID + "', '" + firstName + "');")
-    div(id="clicker_game")
+    script(src="javascripts/KoiosKlicker-client/KoiosKlickerResultsClient.js")
+  body(onload="loadResults('" + gameID + "', '" + firstName + "');")
+    div(id="clicker_results")

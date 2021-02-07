@@ -1,12 +1,18 @@
 html, body {
   height: 100%;
-  font-family: "Helvetica Neue";
+  font-family: "Verdana";
   margin: 0px;
 }
 
 p {
   margin-top: 0px;
   margin-bottom: 24px;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  animation: blinking 2s linear infinite;
 }
 
 #clicker_game {
@@ -16,7 +22,7 @@ p {
   touch-action: manipulation;
 }
 
-.clicker_stat {
+.clicker_text {
   color: rgb(54, 179, 106);
   font-size: x-large;
 }
@@ -42,7 +48,7 @@ p.clicker_button {
   border-radius: 0.35em;
   box-shadow: inset 0 -0.8em 0 -0.35em rgba(0,0,0,0.17);
   position: relative;
-  animation: fadeIn ease 2s;
+  animation: buttonFadeIn ease 2s;
   user-select: none; /* disable highlighting */
   touch-action: manipulation; /* disable double-tap zoom activating on mobile */
 }
@@ -52,10 +58,85 @@ p.clicker_button:active {
   box-shadow: none;
 }
 
-@keyframes fadeIn {
+@keyframes buttonFadeIn {
   0% {
     opacity: 0;
     top: 2em;
+  }
+
+  100% {
+    opacity: 1;
+    top: 0em;
+  }
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.7;
+  }
+}
+
+
+/*** RESULTS PAGE ***/
+#clicker_results {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.results_text_div {
+  position: relative;
+  margin-top: 100px;
+  animation: leaderboardFadeIn ease 2s;
+}
+
+.results_text {
+  color: rgb(6, 140, 163);
+  font-size: x-large;
+}
+
+.leaderboard_div {
+  position: relative;
+}
+
+.leaderboard_table, .leaderboard_table th, .leaderboard_table td {
+  border: 1px solid black;
+}
+
+.leaderboard_table {
+  position: relative;
+  margin: 0 auto;
+  border-collapse: collapse;
+  animation: leaderboardFadeIn ease 2s;
+}
+
+.leaderboard_table_headers td {
+  text-align: center;
+  font-weight: bold;
+}
+
+.leaderboard_table td {
+  padding: 20px;
+}
+
+.try_again_div {
+  position: relative;
+  margin-top: 10px;
+  animation: leaderboardFadeIn ease 2s;
+}
+
+@keyframes leaderboardFadeIn {
+  0% {
+    opacity: 0;
+    top: 10em;
   }
 
   100% {

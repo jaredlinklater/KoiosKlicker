@@ -15,13 +15,13 @@ class UserManager {
     // Finds user in server-side local storage by given ID.
     findUserById(id, callback) {
         const user = ServerSideStorage.findUserById(id);
-        callback(user);
+        if(callback) callback(user);
     }
 
     // Finds user in server-side local storage by given username.
     findUserByUsername(username, callback) {
         const user = ServerSideStorage.findUserByUsername(username);
-        callback(user);
+        if(callback) callback(user);
     }
 
     // Checks a user's password against a given string. Should hash
