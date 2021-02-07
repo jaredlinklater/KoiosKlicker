@@ -62,6 +62,12 @@ router.post("/login",
     })
 );
 
+// Handles logging out
+router.get('/logout', (req, res, next) => {
+    req.logout();
+    res.redirect('/');
+});
+
 // Login/Register views
 router.get("/register", (req, res, next) => {
     res.render("register");

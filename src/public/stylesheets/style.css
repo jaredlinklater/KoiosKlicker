@@ -2,8 +2,6 @@
 :root {
   --green: rgb(142, 199, 68);
   --blue: rgb(6, 140, 163);
-  --greenTransparent: rgba(142, 199, 68, 0.9);
-  --blueTransparent: rgba(6, 140, 163, 0.9);
 }
 
 html {

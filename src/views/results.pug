@@ -11,6 +11,9 @@ html
     link(rel="stylesheet", href="stylesheets/KoiosKlicker-client/animated_background.css")
     script(src="javascripts/KoiosKlicker-client/KoiosKlickerResultsClient.js")
   body(onload="loadResults('" + gameID + "', '" + firstName + "');")
+    a(href="/logout")
+      .logout_div
+        | Logout
     div(id="clicker_results")
       ul.circles
         li
