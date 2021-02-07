@@ -2,38 +2,13 @@
   "users": [
     {
       "id": 1,
-      "username": "admin",
-      "firstName": "Admin",
-      "lastName": "Istrator",
-      "password": "password",
-      "gameID": "aCbvDRJDnhRSI6UcddpOI"
-    },
-    {
-      "id": 2,
-      "username": "fredb",
-      "firstName": "Fred",
-      "lastName": "Bean",
-      "password": "pass",
-      "gameID": "YwcZxao2jfcAbDOV9Uf18"
+      "username": "test",
+      "firstName": "test",
+      "lastName": "test",
+      "password": "test"
     }
   ],
-  "userCount": 2,
-  "results": [
-    {
-      "userID": 1,
-      "gameID": "aCbvDRJDnhRSI6UcddpOI",
-      "CPS": 0.2,
-      "time": 1612725299213
-    }
-  ],
-  "cpsResults": [
-    {
-      "userID": 2,
-      "CPS": 6.2
-    },
-    {
-      "userID": 1,
-      "CPS": 11.8
-    }
-  ]
+  "userCount": 1,
+  "results": [],
+  "cpsResults": []
 }
