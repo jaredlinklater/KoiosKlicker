@@ -44,11 +44,9 @@ app.use(function(err, req, res, next) {
 // Prepare web server
 const server = require("http").Server(app);
 
-// Attach socket.io to webserver
-const io = require("socket.io")(server);
-
 // Prepare KoiosKlicker server
-const KoiosKlicker = require("./koios_modules/KoiosKlicker-server/ClickerGameServer")(io);
+const KoiosKlickerServer = require("./koios_modules/KoiosKlicker-server/KoiosKlickerServer");
+KoiosKlickerServer.registerServer(server);
 
 // Start web server
 server.listen(3000);

@@ -1,12 +1,22 @@
-class ClickerGame {
-    constructor(username) {
-        //this.socket = io(); // used to communicate with server
+function loadGame(gameID, username) {
+    const game = new KoiosKlickerGameClient(gameID, username);
+    game.showDisplay();
+}
+
+// Class for loading and running the Koios Klicker game
+class KoiosKlickerGameClient {
+    constructor(gameID, username) {
+        this._socket = io(); // used to communicate with server
+        this._gameID = gameID ? gameID : null; // gameID to send to server alongside scores
         this._username = username ? username : null; // username to greet the player with
+
+        this._socket.emit("newGame", this._gameID); // let server know game was successfully started
 
         // Displayed text that may want to be changed from time to time.
         this._greetingLabel = "Hello, " + this._username + "! Are you ready to play?"; // only shown if username is given
         this._buttonLabel = "CLICK!";
         this._instructionsLabel = "Click the button as many times as you can in 5 seconds.";
+        this._seeResultsLabel = "See results!";
 
         // Initialise game variables
         this._clicks = 0;
@@ -14,7 +24,7 @@ class ClickerGame {
         this._timerUpdateInterval = 10; // timer update rate, in milliseconds
     }
 
-    initDisplay() {
+    showDisplay() {
         // Initialise display
         this._display = document.createElement("div");
         this._display.classList.add("center");
@@ -23,20 +33,20 @@ class ClickerGame {
         // Greeting display
         if(this._username) {
             const greetingLabel = document.createElement("p");
-            greetingLabel.classList.add("clicker_stat");
+            greetingLabel.classList.add("clicker_text");
             greetingLabel.appendChild(document.createTextNode(this._greetingLabel));
             this._display.appendChild(greetingLabel);
         }
         
         // Instructions display
         const instructionsLabel = document.createElement("p");
-        instructionsLabel.classList.add("clicker_stat");
+        instructionsLabel.classList.add("clicker_text");
         instructionsLabel.appendChild(document.createTextNode(this._instructionsLabel));
         this._display.appendChild(instructionsLabel);
 
         // Timer display
         const timeDisplayLabel = document.createElement("p");
-        timeDisplayLabel.classList.add("clicker_stat");
+        timeDisplayLabel.classList.add("clicker_text");
         this._timeDisplay = document.createElement("span");
         this._updateTimerDisplay();
 
@@ -49,7 +59,7 @@ class ClickerGame {
         this._clickCountDisplay = document.createElement("span"); // updated on each button click
         this._clickCountDisplay.appendChild(document.createTextNode(this._clicks));
         const clickCountLabel = document.createElement("p");
-        clickCountLabel.classList.add("clicker_stat");
+        clickCountLabel.classList.add("clicker_text");
         clickCountLabel.appendChild(document.createTextNode("Clicks: "));
         clickCountLabel.appendChild(this._clickCountDisplay);
         this._display.appendChild(clickCountLabel);
@@ -76,6 +86,7 @@ class ClickerGame {
 
     // Increments the game's click counter and calls for a display update
     _recordClick() {
+        this._socket.emit("reportClick"); // Tell server button was clicked
         this._clicks++;
         this._updateClickCountDisplay();
     }
@@ -116,8 +127,25 @@ class ClickerGame {
         this._timeDisplay.appendChild(document.createTextNode(this._formatTime(this._remainingTime)));
     }
     
+    // Prevents clicks from being incremented, replaces button
+    // with 'show results' button
     _endGame() {
         this._button.removeEventListener("click", this._gameClickHandler);
+        this._socket.emit("endGame", this._clicks);
+        this._showResultsLink();
+    }
+
+    // When game is finished, show link to navigate to results page
+    _showResultsLink() {
+        const resultsParagraph = document.createElement("p");
+        resultsParagraph.classList.add("clicker_text");
+
+        const resultsLink = document.createElement("a");
+        resultsLink.innerHTML = this._seeResultsLabel;
+        resultsLink.href = "/results";
+        
+        resultsParagraph.appendChild(resultsLink);
+        this._display.appendChild(resultsParagraph);
     }
 
     // Formats time consistently
