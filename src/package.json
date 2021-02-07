@@ -8,7 +8,8 @@
     ]
   },
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "mon": "nodemon app.js"
   },
   "dependencies": {
     "connect-ensure-login": "^0.1.1",
